@@ -627,34 +627,33 @@ body {
 .weekly-result-time { color: var(--gold); font-weight: 600; font-size: 14px; }
 .weekly-result-status { font-size: 20px; }
 
-/* Back button */
+/* Top nav bar */
 .top-nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 16px;
   width: 100%;
   padding: 12px 0 8px;
   flex-shrink: 0;
 }
 .top-nav .nav-btn {
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.2);
-  color: var(--white);
-  padding: 8px 18px;
-  border-radius: 24px;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.6);
+  padding: 8px 4px;
   font-family: 'Fredoka', sans-serif;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   transition: all 0.2s;
   -webkit-tap-highlight-color: transparent;
 }
-.top-nav .nav-btn:active { transform: scale(0.95); background: rgba(255,255,255,0.25); }
+.top-nav .nav-btn:active { color: var(--white); }
 .top-nav .nav-btn.hidden { visibility: hidden; pointer-events: none; }
+.top-nav .mode-badge { margin-bottom: 0; }
 .back-btn { display: none; }
 
 /* Mode badge */
@@ -794,9 +793,9 @@ body {
   <div class="screen" id="screen-coop-players">
     <div class="top-nav">
       <button class="nav-btn" onclick="goHome()">&#8592; Back</button>
+      <span class="mode-badge coop">Co-op Mode</span>
       <button class="nav-btn hidden">Home</button>
     </div>
-    <span class="mode-badge coop">Co-op Mode</span>
     <div class="section-title">How Many Players?</div>
     <div class="section-desc">Everyone works together!</div>
     <div class="player-count-grid" id="coop-player-grid"></div>
@@ -807,9 +806,9 @@ body {
   <div class="screen" id="screen-coop-timer">
     <div class="top-nav">
       <button class="nav-btn" onclick="showScreen('screen-coop-players')">&#8592; Back</button>
+      <span class="mode-badge coop">Co-op Mode</span>
       <button class="nav-btn hidden">Home</button>
     </div>
-    <span class="mode-badge coop">Co-op Mode</span>
     <div class="section-title">Choose Your Timer</div>
     <div class="section-desc">How long per week?</div>
     <div class="timer-options" id="coop-timer-options"></div>
@@ -820,9 +819,9 @@ body {
   <div class="screen" id="screen-coop-game">
     <div class="top-nav">
       <button class="nav-btn hidden">Back</button>
+      <span class="mode-badge coop">Co-op Mode</span>
       <button class="nav-btn" onclick="confirmHome()">Home &#8962;</button>
     </div>
-    <span class="mode-badge coop">Co-op Mode</span>
     <div class="week-indicator" id="coop-weeks"></div>
     <div class="section-title" id="coop-week-title">WEEK 1</div>
     <div class="timer-display">
@@ -864,9 +863,9 @@ body {
   <div class="screen" id="screen-comp-players">
     <div class="top-nav">
       <button class="nav-btn" onclick="goHome()">&#8592; Back</button>
+      <span class="mode-badge competitive">Competitive</span>
       <button class="nav-btn hidden">Home</button>
     </div>
-    <span class="mode-badge competitive">Competitive</span>
     <div class="section-title">How Many Players?</div>
     <div class="section-desc">Choose 2 to 5 players</div>
     <div class="player-count-grid" id="comp-player-grid"></div>
@@ -877,9 +876,9 @@ body {
   <div class="screen" id="screen-comp-names">
     <div class="top-nav">
       <button class="nav-btn" onclick="showScreen('screen-comp-players')">&#8592; Back</button>
+      <span class="mode-badge competitive">Competitive</span>
       <button class="nav-btn hidden">Home</button>
     </div>
-    <span class="mode-badge competitive">Competitive</span>
     <div class="section-title">Enter Player Names</div>
     <div class="section-desc" id="comp-names-desc"></div>
     <div class="player-names-list" id="comp-names-list"></div>
@@ -890,9 +889,9 @@ body {
   <div class="screen" id="screen-comp-order">
     <div class="top-nav">
       <button class="nav-btn" onclick="showScreen('screen-comp-names')">&#8592; Back</button>
+      <span class="mode-badge competitive">Competitive</span>
       <button class="nav-btn hidden">Home</button>
     </div>
-    <span class="mode-badge competitive">Competitive</span>
     <div class="section-title">Play Order</div>
     <div class="section-desc">Randomized!</div>
     <div class="order-list" id="comp-order-list"></div>
@@ -903,9 +902,9 @@ body {
   <div class="screen" id="screen-comp-timer">
     <div class="top-nav">
       <button class="nav-btn" onclick="showScreen('screen-comp-order')">&#8592; Back</button>
+      <span class="mode-badge competitive">Competitive</span>
       <button class="nav-btn hidden">Home</button>
     </div>
-    <span class="mode-badge competitive">Competitive</span>
     <div class="section-title">Choose Timer</div>
     <div class="section-desc">Seconds per player turn</div>
     <div class="timer-options">
@@ -920,9 +919,9 @@ body {
   <div class="screen" id="screen-comp-game">
     <div class="top-nav">
       <button class="nav-btn hidden">Back</button>
+      <span class="mode-badge competitive">Competitive</span>
       <button class="nav-btn" onclick="confirmHome()">Home &#8962;</button>
     </div>
-    <span class="mode-badge competitive">Competitive</span>
     <div class="week-indicator" id="comp-weeks"></div>
     <div class="section-title" id="comp-week-title">WEEK 1</div>
     <div class="current-player-label" id="comp-player-label">Player</div>
