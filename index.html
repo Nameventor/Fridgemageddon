@@ -948,6 +948,10 @@ body {
     <div class="section-title" id="comp-weekly-title">Week 1 Complete!</div>
     <div class="section-desc">Results</div>
     <div class="weekly-results" id="comp-weekly-results"></div>
+    <div id="comp-weekly-next-order" style="display:none; width:100%; max-width:280px; margin-top:16px;">
+      <div class="section-desc" style="margin-bottom:8px; font-weight:600; color:var(--gold);">Next Week's Order:</div>
+      <div class="order-list" id="comp-weekly-order-list"></div>
+    </div>
     <button class="btn btn-primary" id="comp-weekly-btn" onclick="compNextWeek()">START NEXT WEEK</button>
   </div>
 
@@ -1527,10 +1531,29 @@ function compShowWeeklySummary() {
   });
 
   const btn = document.getElementById('comp-weekly-btn');
+  const nextOrderSection = document.getElementById('comp-weekly-next-order');
+  const nextOrderList = document.getElementById('comp-weekly-order-list');
+
   if (!allCleared || compCurrentWeek >= TOTAL_WEEKS) {
     btn.textContent = 'SEE FINAL RESULTS';
     btn.onclick = compShowFinal;
+    nextOrderSection.style.display = 'none';
   } else {
+    // Shuffle for next week
+    for (let i = compPlayOrder.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [compPlayOrder[i], compPlayOrder[j]] = [compPlayOrder[j], compPlayOrder[i]];
+    }
+    nextOrderList.innerHTML = '';
+    compPlayOrder.forEach((name, idx) => {
+      const item = document.createElement('div');
+      item.className = 'order-item';
+      item.innerHTML =
+        '<div class="order-number">' + (idx + 1) + '</div>' +
+        '<div class="order-name">' + escapeHtml(name) + '</div>';
+      nextOrderList.appendChild(item);
+    });
+    nextOrderSection.style.display = 'block';
     btn.textContent = 'START WEEK ' + (compCurrentWeek + 1);
     btn.onclick = compNextWeek;
   }
